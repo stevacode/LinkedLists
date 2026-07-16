@@ -13,7 +13,8 @@ project ("LinkedLists")
 
 # Add source to this project's executable.
 #add_executable (LinkedLists "LinkedLists.cpp" "LinkedLists.h" "RecursiveLinkedLists.cpp")
-add_executable (LinkedLists  "LinkedLists.h" "RecursiveLinkedLists.cpp")
+#add_executable (LinkedLists  "LinkedLists.h" "RecursiveLinkedLists.cpp" "CountAndSum.cpp")
+add_executable (LinkedLists  "LinkedLists.h" "CountAndSum.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET LinkedLists PROPERTY CXX_STANDARD 20)
