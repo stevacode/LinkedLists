@@ -53,6 +53,17 @@ int recursiveCount(struct Node* p)
 		return 0;
 }
 
+int count2(Node* p)
+{
+	int x = 0;
+	if (p)
+	{
+		x = count2(p->next);
+		return x + 1;
+	}
+	else
+		return 0;
+}
 
 int sum(struct Node* p)
 {
@@ -83,6 +94,7 @@ int main()
 	cout << "Sum: " << sum(first) << endl;
 	cout << "Recursive Count: " << recursiveCount(first) << endl;
 	cout << "Recursive Sum: " << recursiveSum(first) << endl;
+	cout << "Count2: " << count2(first) << endl;
 
 	return 0;
 }
