@@ -47,6 +47,49 @@ void recursiveDisplay(Node* h)
 	flag = 0;
 }
 
+int length(Node* h)
+{
+	int len = 0;
+	do
+	{
+		len++;
+		h = h->next;
+	} while (h != Head);
+	return len;
+}
+
+void insert(Node* p, int index, int x)
+{
+	Node* t;
+	if (index < 0 || index > length(Head))
+		return;
+	t = new Node;
+	t->data = x;
+	if (index == 0)
+	{
+		if (Head == NULL)
+		{
+			Head = t;
+			Head->next = Head;
+		}
+		else
+		{
+			while (p->next != Head)
+				p = p->next;
+			p->next = t;
+			t->next = Head;
+			Head = t;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < index - 1; i++)
+			p = p->next;
+		t->next = p->next;
+		p->next = t;
+	}
+}
+
 int main()
 {
 	int A[] = { 1, 2, 3, 4, 5 , 6};
@@ -54,5 +97,12 @@ int main()
 	display(Head);
 	recursiveDisplay(Head);
 	cout << endl;
+	insert(Head, 0, 10);
+	display(Head);
+	insert(Head, 3, 11);
+	display(Head);
+	insert(Head, 8, 12);
+	display(Head);
+	
 	return 0;
 }
