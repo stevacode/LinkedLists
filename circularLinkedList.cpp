@@ -90,6 +90,41 @@ void insert(Node* p, int index, int x)
 	}
 }
 
+int Delete(Node* p, int index)
+{
+	Node* q;
+	int x = -1;
+	if (index < 1 || index > length(Head))
+		return -1;
+	if (index == 1)
+	{
+		while (p->next != Head)
+			p = p->next;
+		x = Head->data;
+		if (Head == p) // if only one node in the list
+		{
+			delete Head;
+			Head = NULL;
+		}
+		else
+		{
+			p->next = Head->next;
+			delete Head;
+			Head = p->next;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < index - 2; i++)
+			p = p->next;
+		q = p->next;
+		p->next = q->next;
+		x = q->data;
+		delete q;
+	}
+	return x;
+}
+
 int main()
 {
 	int A[] = { 1, 2, 3, 4, 5 , 6};
@@ -103,6 +138,7 @@ int main()
 	display(Head);
 	insert(Head, 8, 12);
 	display(Head);
-	
+	cout << "Deleted element: " << Delete(Head, 1) << endl;
+	display(Head);
 	return 0;
 }
